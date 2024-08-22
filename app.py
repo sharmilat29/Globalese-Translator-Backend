@@ -49,7 +49,7 @@ async def read_root():
 class TranslationRequest(BaseModel):
   input_text: str
   target_language: str
-
+"""
 @app.post("/translate_to_phoneme")
 def translate_to_phoneme(request: TranslationRequest):
 
@@ -65,7 +65,7 @@ def translate_to_phoneme(request: TranslationRequest):
       return {"transliterated_text": "Phoneme generation not supported"}
   except Exception as e:
     raise HTTPException(status_code=500, detail="Phoneme generation failed")
-
+"""
 @app.post("/translate_to_audio")
 def translate_to_audio(request: TranslationRequest):
   
