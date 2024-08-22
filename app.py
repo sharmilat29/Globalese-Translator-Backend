@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, Response
 from pydantic import BaseModel
 import io
 from deep_translator import GoogleTranslator
@@ -74,8 +74,9 @@ def translate_to_audio(request: TranslationRequest):
     tts = gTTS(translated, lang = gtl_to_gtts[request.target_language], slow = True)
     audio_buffer = io.BytesIO()
     tts.save(audio_buffer)
-    #return FileResponse(audio_file, media_type = "audio/mpeg")
-    return {'translated' : translated}
+    audio_buffer.seek(0)
+    return Response(content = audio_buffer.read(), media_type = "audio/mpeg")
+    #return {'translated' : translated}
 
   except Exception as e:
     raise HTTPException(status_code=500, detail="Audio generation failed")
