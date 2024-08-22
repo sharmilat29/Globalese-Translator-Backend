@@ -1,5 +1,6 @@
 {pkgs}: {
   deps = [
+    pkgs.docker
     pkgs.libGLU
     pkgs.libGL
     pkgs.zlib
