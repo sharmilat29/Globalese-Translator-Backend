@@ -70,12 +70,13 @@ def translate_to_phoneme(request: TranslationRequest):
 def translate_to_audio(request: TranslationRequest):
   
   translated = GoogleTranslator(source = 'auto', target = request.target_language).translate(request.input_text)
-  return {'translated' : translated}
   try:
     tts = gTTS(translated, lang = gtl_to_gtts[request.target_language], slow = True)
-    audio_file = "output.mp3"
-    tts.save(audio_file)
-    return FileResponse(audio_file, media_type = "audio/mpeg")
+    #audio_file = "output.mp3"
+    #tts.save(audio_file)
+    #return FileResponse(audio_file, media_type = "audio/mpeg")
+    return {'translated' : translated}
+
   except Exception as e:
     raise HTTPException(status_code=500, detail="Audio generation failed")
 
