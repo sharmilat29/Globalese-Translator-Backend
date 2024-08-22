@@ -3,3 +3,4 @@ uvicorn
 deep-translator 
 gTTS
 pydantic
+io

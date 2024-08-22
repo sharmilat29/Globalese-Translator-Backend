@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
-from io import BytesIO
+from io
 from deep_translator import GoogleTranslator
 from gtts import gTTS
 #import epitran
@@ -72,8 +72,8 @@ def translate_to_audio(request: TranslationRequest):
   translated = GoogleTranslator(source = 'auto', target = request.target_language).translate(request.input_text)
   try:
     tts = gTTS(translated, lang = gtl_to_gtts[request.target_language], slow = True)
-    audio_file = "output.mp3"
-    tts.save(audio_file)
+    audio_buffer = io.BytesIO()
+    tts.save(audio_buffer)
     #return FileResponse(audio_file, media_type = "audio/mpeg")
     return {'translated' : translated}
 
