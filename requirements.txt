@@ -1,6 +1,2 @@
 fastapi
 uvicorn
-deep-translator 
-epitran
-gTTS
-pydantic
