@@ -78,3 +78,9 @@ def translate_to_audio(request: TranslationRequest):
     return FileResponse(audio_file, media_type = "audio/mpeg")
   except Exception as e:
     raise HTTPException(status_code=500, detail="Audio generation failed")
+
+
+
+if __name__ == '__main__':
+  import uvicorn
+  uvicorn.run(app)
