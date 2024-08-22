@@ -5,7 +5,7 @@ from pydantic import BaseModel
 from io import BytesIO
 from deep_translator import GoogleTranslator
 from gtts import gTTS
-import epitran
+#import epitran
 import os
 
 #Make dictionary for common language supported across all libraries
