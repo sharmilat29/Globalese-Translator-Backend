@@ -72,8 +72,8 @@ def translate_to_audio(request: TranslationRequest):
   translated = GoogleTranslator(source = 'auto', target = request.target_language).translate(request.input_text)
   try:
     tts = gTTS(translated, lang = gtl_to_gtts[request.target_language], slow = True)
-    #audio_file = "output.mp3"
-    #tts.save(audio_file)
+    audio_file = "output.mp3"
+    tts.save(audio_file)
     #return FileResponse(audio_file, media_type = "audio/mpeg")
     return {'translated' : translated}
 
